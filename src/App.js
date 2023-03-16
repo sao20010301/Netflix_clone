@@ -7,10 +7,10 @@ import WatchList from './pages/WatchList';
 import { AuthContextProvider } from "./context/AuthContext"
 import Signin from './pages/Signin';
 import ProtectedRoute from './pages/ProtectedRoute';
-
 function App() {
+  const rootUrl = process.env.NODE_ENV === "production" ? "/Netflix_clone" : "/"
   return (
-    <Router class="box-border">
+    <Router basename={rootUrl} class="box-border">
       <AuthContextProvider>
         <Navbar />
         <Routes>
