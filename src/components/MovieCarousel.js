@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react"
 import requestsUrl from "../RequestsUrl"
 
 function MovieCarousel({showDetails}) {
-    console.log("Carousel re render")
     const [movies, setMovies] = useState([])
     const randomMovie = movies[Math.floor(Math.random() * movies.length)]
     useEffect(() => {
         const fetchData = async () => {
-            console.log("Fetch again")
             const res = await fetch(requestsUrl.requestsPopular)
             try {
                 if(!res.ok) {
@@ -18,7 +16,6 @@ function MovieCarousel({showDetails}) {
                     })
                 }
                 const res_json = await res.json()
-                console.log(res_json)
                 setMovies(res_json.results)
             } catch(err) {
                 console.log("error", err)

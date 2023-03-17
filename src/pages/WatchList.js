@@ -35,10 +35,8 @@ export default function WatchList() {
         }
     }
     const showDetails = React.useCallback((event, item) => {
-        console.log(event.target.id, event.currentTarget.id)
         if(event.target.id === "overlayBg") {
             setIsShow(false)
-            console.log(isShow, event.target.id)
         } else {
             setClickMovie(item)
             setIsShow(true)

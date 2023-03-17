@@ -3,7 +3,6 @@ import Movie from "./Movie"
 import { MdChevronLeft, MdChevronRight } from "react-icons/md"
 
 function Row({title, fetchUrl, showDetails}) {
-    console.log("re render")
     const [movies, setMovies] = useState([])
     const slider = useRef()
     useEffect(() => {
@@ -18,7 +17,6 @@ function Row({title, fetchUrl, showDetails}) {
                     })
                 }
                 const res_json = await res.json()
-                console.log(res_json)
                 setMovies(res_json.results)
             } catch(err) {
                 console.log("error", err)

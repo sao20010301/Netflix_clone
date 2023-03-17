@@ -3,7 +3,6 @@ import { UserAuth } from "../context/AuthContext"
 import notFoundImg from "../ext.jpeg"
 
 function notFound(event) {
-    console.log(event.target)
     event.target.src = notFoundImg
 }
 

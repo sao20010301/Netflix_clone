@@ -12,22 +12,17 @@ export default function Search() {
     const q = searchParams.get("q")
 
     const showDetails = React.useCallback((event, item) => {
-        console.log(event.target, event.currentTarget)
         if(event.target.id === "overlayBg") {
             setIsShow(false)
-            console.log(isShow, event.target.id)
         } else {
-            console.log(item.id)
             setClickMovie(item)
             setIsShow(true)
-            console.log(isShow, "not overlay")
         }
     }, [])
     
     useEffect(() => {
         const fetchData = async () => {
             const res = await fetch(requestsUrl.requestsSearch+q)
-            console.log(res)
             try {
                 if(!res.ok) {
                     throw new Error("Error", {

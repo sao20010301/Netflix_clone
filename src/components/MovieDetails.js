@@ -4,7 +4,6 @@ import { UserAuth } from "../context/AuthContext"
 import notFoundImg from "../ext.jpeg"
 
 function notFound(event) {
-    console.log(event.target)
     event.target.src = notFoundImg
 }
 
@@ -14,7 +13,6 @@ export default function MovieDetails({clickMovie, showDetails}) {
     const [isInList, setIsInList] = useState(watchLater && watchLater.some(e => e.id === clickMovie.id))
     const [isWatched, setIsWatched] = useState(thisMovie?.watched)
     const [movieInfo, setMovieInfo] = useState(clickMovie)
-    console.log("this id", movieInfo)
     
     useEffect(() => {
         if(!clickMovie?.overview) {
@@ -29,7 +27,6 @@ export default function MovieDetails({clickMovie, showDetails}) {
                         })
                     }
                     const res_json = await res.json()
-                    console.log(res_json)
                     setMovieInfo(res_json)
                 } catch(err) {
                     console.log("error", err)

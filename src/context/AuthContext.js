@@ -29,9 +29,7 @@ export const AuthContextProvider = ({ children }) => {
             console.log("error", error)
         })
     }
-    console.log(user)
     async function addWatchLater(event, item) {
-        console.log(event, item)
         event.stopPropagation()
         const addDocRef = user !== null ? doc(db, "users", user?.email, "watchList", `${item.id}`) : ""
         await setDoc(addDocRef, {
@@ -61,7 +59,6 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
-            console.log("user:", currentUser)
         })        
         return () => {
             unsubscribe()
@@ -73,11 +70,9 @@ export const AuthContextProvider = ({ children }) => {
                 const q = query(collection(db, "users", user?.email, "watchList"))
                 const unsub = onSnapshot(q, (querySnapshot) => {
                     const result = []
-                    console.log(querySnapshot)
                     querySnapshot.forEach((doc) => {
                         result.push(doc.data())
                     })
-                    console.log("data:", result)
                     setWatchLater(result)
                 })
             }

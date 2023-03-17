@@ -28,7 +28,6 @@ export default function Navbar() {
         function handleScroll() {
             if(window.scrollY === 0) {
                 setScrollDown(false)
-                console.log(window.scrollY, scrollDown)
             } else {
                 setScrollDown(true)
             }

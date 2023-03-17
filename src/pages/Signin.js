@@ -11,9 +11,7 @@ export default function Signin() {
     const handleGoogleSignIn = async () => {
         try {
             const result = await googleSignIn()
-            console.log("Logined", result.user?.email)
             const userExist = await getDoc(doc(db, "users", result.user?.email))
-            console.log("userExist:", userExist.exists())
             if(!userExist.exists()) {
                 setDoc(doc(db, "users", result.user?.email), {
                     watchList: []
